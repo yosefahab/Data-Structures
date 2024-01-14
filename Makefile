@@ -10,11 +10,11 @@ CXXFLAGS = -g --std=c++17 -Wall -Werror -Wextra
 # -Werror turns warnings to errors,
 # -WExtra turns on extra debug information not provided by -Wall
 
-# match all .cpp files
-SOURCES = $(wildcard *.cpp)
-# replace .cpp with .o
-OBJECTS = $(SOURCES:.cpp=.o)
 TARGET = main
+# match all .cpp files
+SOURCES := $(wildcard */*.cpp) main.cpp
+# replace .cpp with .o
+OBJECTS := $(SOURCES:.cpp=.o)
 
 all: $(TARGET)
 $(TARGET): $(OBJECTS)
@@ -25,7 +25,7 @@ $(TARGET): $(OBJECTS)
 
 .PHONY: clean
 clean:
-	rm -f *.o *.exe *.out $(TARGET)
+	rm -rf */*.o *.exe *.out $(TARGET)
 
 # %.c === *.c
 # $* matches whatever the % was
